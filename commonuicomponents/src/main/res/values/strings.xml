@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="lorem_ipsum" translatable="false">lorem ipsum dskksadlakldklksdkskdo askdlksdks askdskdksl ksldlkalkcalkl adlskdl akdlskdlsl asdklskdlkalk sdklskdladklks asdklskdlkalkldkslk akdlskdlklklak sdklakdlkslk lsdlkalklakca adklskdlalk askdlskadlkalk aldklskadlksaldk</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="moviePosterContentDesc">This is the poster of the movie</string>
+    <string name="castPhotoContentDesc">This is the photo of the cast</string>
+    <string name="movies">Movies</string>
+    <string name="tv_show">Tv Show</string>
+    <string name="content_not_available">This content is not available in your language</string>
+
+</resources>
+

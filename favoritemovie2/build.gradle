@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        applicationId "com.example.candra.favoritemovie2"
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dynamicFeatures = []
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":commonuicomponents")
+    implementation project (":favoritefeature2")
+    implementation project (":data")
+    implementation project (":utils")
+
+    implementation Dependencies.kotlin_stdlib
+    implementation Dependencies.kotlin_ktx_jetpack
+
+    implementation Dependencies.kotlin_coroutines
+
+    implementation Dependencies.lifecycle_ext
+    annotationProcessor Dependencies.annotationProsessor_lifecycle_ext
+
+    implementation Dependencies.appcompat
+
+    implementation Dependencies.constraintlayout
+    implementation Dependencies.androidmaterial
+
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.testrunner
+    androidTestImplementation Dependencies.espresso_core
+}

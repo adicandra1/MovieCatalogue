@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/swipeRefresh">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            tools:context=".view.activity.DetailActivity"
+            tools:layout_editor_absoluteY="81dp">
+
+            <ImageView
+                android:id="@+id/moviePosterField"
+                android:layout_width="177dp"
+                android:layout_height="236dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/moviePosterContentDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/movieTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:maxWidth="156dp"
+                android:text="@string/movie_title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/releasedDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/releasedText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/movieTitle" />
+
+            <TextView
+                android:id="@+id/releasedDateField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                tools:text="@string/releasedTextExample"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/releasedDateText" />
+
+            <TextView
+                android:id="@+id/runtimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/runtimeText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/releasedDateField" />
+
+            <TextView
+                android:id="@+id/runtimeField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                tools:text="@string/runtimeTextExample"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/runtimeText" />
+
+            <TextView
+                android:id="@+id/genreText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/genreText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/runtimeField" />
+
+            <com.adroitandroid.chipcloud.ChipCloud
+                android:id="@+id/genreHolder"
+                android:layout_width="159dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:minHeight="70dp"
+                app:gravity="left"
+                app:layout_constraintHeight_min="70dp"
+                app:layout_constraintStart_toEndOf="@+id/moviePosterField"
+                app:layout_constraintTop_toBottomOf="@+id/genreText"
+                app:selectMode="none"
+                app:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/overviewText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/overviewText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/castHolder" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/castHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/genreHolder" />
+
+            <TextView
+                android:id="@+id/overviewField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/lorem_ipsum"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overviewText" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                tools:layout_editor_absoluteY="725dp" />
+
+            <TextView
+                android:id="@+id/budgetText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/budgetText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusField" />
+
+            <TextView
+                android:id="@+id/budgetField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/budgetTextExample"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/budgetText" />
+
+            <TextView
+                android:id="@+id/revenueText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/revenue"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/budgetField" />
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/status"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/overviewField" />
+
+            <TextView
+                android:id="@+id/statusField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusText"
+                tools:text="Ongoing" />
+
+            <TextView
+                android:id="@+id/revenueField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/budgetTextExample"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/revenueText" />
+
+            <TextView
+                android:id="@+id/keywordsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/keywordsText"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/revenueField" />
+
+            <com.adroitandroid.chipcloud.ChipCloud
+                android:id="@+id/keywordsHolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:gravity="left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/keywordsText"
+                app:selectMode="none" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+

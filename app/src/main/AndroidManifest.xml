@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.candra.moviecatalogue">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.notification.NotificationTestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".view.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.SEARCH" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name=".view.activity.DetailActivity">
+            <intent-filter>
+                <action android:name="com.example.candra.moviecatalogue.detailactivity.open" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+            android:name="com.example.candra.data.contentprovider.DatabaseContentProvider"
+            android:authorities="com.example.candra.data.contentprovider"
+            android:exported="true" />
+
+        <receiver
+            android:name=".view.widget.FavoriteMovieWidget"
+            android:label="@string/movies">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_movie_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".view.activity.helper.LoadDataApiToDBListener"
+            android:enabled="true"
+            android:permission="android.permission.INTERNET">
+            <intent-filter>
+                <action android:name="broadcast.LOAD_DATA_STARTED" />
+                <action android:name="broadcast.LOAD_DATA_FINISHED" />
+                <action android:name="broadcast.DATA_INSERTED_TO_DB" />
+                <action android:name="broadcast.DATA_DIGITAL_SHOW_LOADED" />
+                <action android:name="broadcast.DATA_CAST_LOADED" />
+                <action android:name="broadcast.DATA_KEYWORD_LOADED" />
+                <action android:name="broadcast.DATA_FAILED_TO_LOAD" />
+                <action android:name="broadcast.RETRY_LOAD_DATA" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".view.widget.FavoriteTvShowWidget"
+            android:label="@string/tv_show">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/favorite_tvshow_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".view.notification.DailyReminderNotifReceiver"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".view.notification.ReleasedTodayDataGetter"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".view.notification.ReleaseTodayNotifReceiver"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".view.notification.RegisterAlarmWhenReboot"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <!--For HTC devices-->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name=".view.activity.helper.LocaleChangedListener"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+
+        </receiver>
+
+        <service
+            android:name=".view.widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+    </application>
+
+</manifest>

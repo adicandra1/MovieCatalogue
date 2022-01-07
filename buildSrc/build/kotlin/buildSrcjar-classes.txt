@@ -1,0 +1,1 @@
+/home/candra/Documents/GitHub/MADE/MovieCatalogue/buildSrc/build/classes/kotlin/main/Config.class:/home/candra/Documents/GitHub/MADE/MovieCatalogue/buildSrc/build/classes/kotlin/main/Dependencies.class:/home/candra/Documents/GitHub/MADE/MovieCatalogue/buildSrc/build/classes/kotlin/main/Versions.class

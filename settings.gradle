@@ -1,0 +1,1 @@
+include ':app', ':favoritemovie2', ':commonuicomponents', ':favoritefeature2', ':data', ':utils'

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Catalogue</string>
+    <string name="castPhotoContentDesc">Ini adalah foto pemain film</string>
+    <string name="moviePosterContentDesc">Ini adalah poster film</string>
+    <string name="movie_title">Judul Film</string>
+    <string name="movies">Film</string>
+    <string name="content_not_available">Konten ini belum ada di bahasa anda</string>
+    <string name="tv_show">Acara Tv</string>
+</resources>

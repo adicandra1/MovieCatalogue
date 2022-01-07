@@ -1,0 +1,99 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        applicationId "com.example.candra.moviecatalogue"
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
+        buildConfigField "String", "BASE_URL_POSTER_IMAGE", "\"https://image.tmdb.org/\""
+        buildConfigField "String", "TMDB_API_KEY", "\"4a391e973e1930be781aff913a22430b\""
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    androidExtensions {
+        experimental = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation project (":commonuicomponents")
+    implementation project (":favoritefeature2")
+    implementation project (":data")
+    implementation project (":utils")
+
+    implementation Dependencies.kotlin_stdlib
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_ktx_jetpack
+
+    //viewModelScope coroutines dependency
+    //noinspection GradleDependency
+    implementation Dependencies.lifecycle_viewmodel
+
+    implementation Dependencies.lifecycle_ext
+    implementation 'androidx.preference:preference:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    annotationProcessor Dependencies.annotationProsessor_lifecycle_ext
+
+    //room
+    implementation Dependencies.room_runtime
+    implementation Dependencies.room_ktx
+    kapt Dependencies.kapt_room_compiler
+
+    //workmanager
+    implementation Dependencies.work_manager
+
+    implementation Dependencies.appcompat
+    implementation Dependencies.constraintlayout
+    implementation Dependencies.recyclerview
+    implementation Dependencies.androidmaterial
+    implementation Dependencies.chipcloud
+    implementation Dependencies.glide
+    implementation Dependencies.gson
+
+    compileOnly Dependencies.lombok
+    annotationProcessor Dependencies.lombok_annotationProcessor
+
+    testImplementation Dependencies.junit
+    testImplementation Dependencies.mockito_core
+    testImplementation Dependencies.mockito_inline
+
+    androidTestImplementation Dependencies.testrunner
+    androidTestImplementation Dependencies.junit_ext
+    androidTestImplementation Dependencies.espresso_core
+}

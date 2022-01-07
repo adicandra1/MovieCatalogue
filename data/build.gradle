@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+
+
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        buildConfigField "String", "TMDB_API_KEY", "\"4a391e973e1930be781aff913a22430b\""
+
+        testInstrumentationRunner Config.testInstrumentationRunner
+        consumerProguardFiles 'consumer-rules.pro'
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas".toString())
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":utils")
+
+    implementation Dependencies.kotlin_stdlib
+    implementation Dependencies.kotlin_coroutines
+
+    implementation Dependencies.lifecycle_ext
+    annotationProcessor Dependencies.annotationProsessor_lifecycle_ext
+
+    implementation Dependencies.room_runtime
+    implementation Dependencies.room_ktx
+    kapt Dependencies.kapt_room_compiler
+
+    implementation Dependencies.gson
+
+    compileOnly Dependencies.lombok
+    annotationProcessor Dependencies.lombok_annotationProcessor
+
+    implementation Dependencies.appcompat
+    implementation Dependencies.kotlin_ktx_jetpack
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.testrunner
+    androidTestImplementation Dependencies.espresso_core
+}
